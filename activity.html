@@ -36,15 +36,23 @@ window.onload = function(){
 
   const newest = links[0];
 
+  // li を取得
+  const li = newest.parentNode;
+
+  // 横並びにする
+  li.style.display = "flex";
+  li.style.alignItems = "center";
+
   const newImg = document.createElement("img");
   newImg.src = "new.gif";
-  newImg.style.verticalAlign = "middle";
-  newImg.style.marginRight = "5px";
+  newImg.style.marginRight = "6px";
 
-  newest.parentNode.insertBefore(newImg, newest);
+  // 先頭に挿入
+  li.insertBefore(newImg, newest);
 
 };
 </script>
+
 </head>
 <body>
 
@@ -92,6 +100,7 @@ MSCボードゲームサークルの<br>
 </center>
 </body>
 </html>
+
 
 
 
