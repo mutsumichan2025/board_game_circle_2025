@@ -76,28 +76,42 @@ function init(){
   String(count).padStart(6,"0");
 
  // calendar
- const today=new Date();
- const y=today.getFullYear();
- const m=today.getMonth();
- const eventDays=[24,25];
+let cal = document.getElementById("calendar");
+if(!cal) return;
 
- const first=new Date(y,m,1).getDay();
- const last=new Date(y,m+1,0).getDate();
+const today = new Date();
+const y = today.getFullYear();
+const m = today.getMonth();
+const eventDays = [24,25];   // ← 活動日
 
- let h="<b>"+y+"年"+(m+1)+"月 カレンダー</b><br>";
- h+="<table border='1' width='100%'><tr>";
- h+="<th>日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th></tr><tr>";
+const first = new Date(y, m, 1).getDay();
+const last = new Date(y, m+1, 0).getDate();
 
- for(let i=0;i<first;i++)h+="<td></td>";
+let h = "<b>"+y+"年"+(m+1)+"月 カレンダー</b><br>";
+h += "<table border='1' width='100%' style='background:white;color:black'>";
+h += "<tr><th>日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th></tr><tr>";
 
- for(let d=1;d<=last;d++){
-   if(eventDays.includes(d)) h+="<td>"+d+"★</td>";
-   else h+="<td>"+d+"</td>";
-   if((first+d)%7==0)h+="</tr><tr>";
- }
- h+="</tr></table>※★は活動日";
+for(let i=0;i<first;i++){
+  h += "<td></td>";
+}
 
- document.getElementById("calendar").innerHTML=h;
+for(let d=1; d<=last; d++){
+  if(eventDays.includes(d)){
+    h += "<td style='background:yellow'>" + d + "★</td>";
+  }else{
+    h += "<td>" + d + "</td>";
+  }
+
+  if((first + d) % 7 == 0){
+    h += "</tr><tr>";
+  }
+}
+
+h += "</tr></table>";
+h += "※★は活動日";
+
+cal.innerHTML = h;
+
 }
 </script>
 
@@ -170,6 +184,7 @@ Last Update : 2026/01/26<br>
 </body>
 
 </html>
+
 
 
 
