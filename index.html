@@ -192,9 +192,49 @@ cal.innerHTML = h;
 </form>
 </div>
 </center>
+<script>
+const sparkleCount = 30;
+const sparkles = [];
+
+for(let i=0;i<sparkleCount;i++){
+  const s = document.createElement("div");
+  s.style.position = "fixed";
+  s.style.width = "6px";
+  s.style.height = "6px";
+  s.style.borderRadius = "50%";
+  s.style.background = "yellow";
+  s.style.pointerEvents = "none";
+  s.style.boxShadow = "0 0 8px white";
+  s.style.opacity = 0;
+  document.body.appendChild(s);
+  sparkles.push({el:s, life:0});
+}
+
+document.addEventListener("mousemove", e=>{
+  const s = sparkles.find(sp=>sp.life<=0);
+  if(!s) return;
+  s.life = 20;
+  s.x = e.clientX;
+  s.y = e.clientY;
+});
+
+function sparkleLoop(){
+  sparkles.forEach(s=>{
+    if(s.life>0){
+      s.el.style.left = s.x+"px";
+      s.el.style.top = s.y+"px";
+      s.el.style.opacity = s.life/20;
+      s.life--;
+    }
+  });
+  requestAnimationFrame(sparkleLoop);
+}
+sparkleLoop();
+</script>
 </body>
 
 </html>
+
 
 
 
