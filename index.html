@@ -64,51 +64,6 @@ a:hover{
 }
 </style>
 
-<div class="box">
-
-<b>■ カレンダー</b><br>
-<div id="calendar"></div>
-
-<script>
-const cal = document.getElementById("calendar");
-
-const today = new Date();
-const y = today.getFullYear();
-const m = today.getMonth();
-const eventDays = [24,25];
-
-const first = new Date(y, m, 1).getDay();
-const last = new Date(y, m+1, 0).getDate();
-
-let h = "<b>"+y+"年"+(m+1)+"月</b><br>";
-h += "<table border='1' width='100%' style='background:white;color:black'>";
-h += "<tr><th>日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th></tr><tr>";
-
-for(let i=0;i<first;i++){
-  h += "<td></td>";
-}
-
-for(let d=1; d<=last; d++){
-  if(eventDays.includes(d)){
-    h += "<td style='background:yellow'>" + d + "★</td>";
-  }else{
-    h += "<td>" + d + "</td>";
-  }
-
-  if((first + d) % 7 == 0){
-    h += "</tr><tr>";
-  }
-}
-
-h += "</tr></table>";
-h += "※★は活動日";
-
-cal.innerHTML = h;
-</script>
-
-</div>
-
-
 </head>
 
 <body>
@@ -174,8 +129,45 @@ Last Update : 2026/01/26<br>
 </div><br>
 
 <div class="box">
+<b>■ カレンダー</b><br>
 <div id="calendar"></div>
-</div><br>
+
+<script>
+const cal = document.getElementById("calendar");
+
+const today = new Date();
+const y = today.getFullYear();
+const m = today.getMonth();
+const eventDays = [24,25];
+
+const first = new Date(y, m, 1).getDay();
+const last = new Date(y, m+1, 0).getDate();
+
+let h = "<b>"+y+"年"+(m+1)+"月</b><br>";
+h += "<table border='1' width='100%' style='background:white;color:black'>";
+h += "<tr><th>日</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th><th>土</th></tr><tr>";
+
+for(let i=0;i<first;i++){
+  h += "<td></td>";
+}
+
+for(let d=1; d<=last; d++){
+  if(eventDays.includes(d)){
+    h += "<td style='background:yellow'>" + d + "★</td>";
+  }else{
+    h += "<td>" + d + "</td>";
+  }
+
+  if((first + d) % 7 == 0){
+    h += "</tr><tr>";
+  }
+}
+
+h += "</tr></table>";
+h += "※★は活動日";
+
+cal.innerHTML = h;
+</script></div><br>
 
 <div class="box">
 <b>■ キリ番報告</b><br>
@@ -190,6 +182,7 @@ Last Update : 2026/01/26<br>
 </body>
 
 </html>
+
 
 
 
