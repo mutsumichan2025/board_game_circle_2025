@@ -25,6 +25,26 @@ a{color:blue;text-decoration:none;}
 a:hover{color:red;background:yellow;}
 </style>
 
+<script>
+window.onload = function(){
+
+  const list = document.getElementById("activityList");
+  if(!list) return;
+
+  const links = list.getElementsByTagName("a");
+  if(links.length === 0) return;
+
+  const newest = links[0];
+
+  const newImg = document.createElement("img");
+  newImg.src = "new.gif";
+  newImg.style.verticalAlign = "middle";
+  newImg.style.marginRight = "5px";
+
+  newest.parentNode.insertBefore(newImg, newest);
+
+};
+</script>
 </head>
 <body>
 
@@ -46,7 +66,8 @@ MSCボードゲームサークルの<br>
 <!-- 右：日付一覧 -->
 <td width="350" valign="top" class="box">
 
-<b>▼ 活動日一覧</b><br><br>
+<div class="box" id="activityList">
+<b>■ 活動日一覧 ■</b><br>
 
 <a href="activity_20260124.html">2026/01/24~25</a><br>
 <a href="activity_20260109.html">2026/01/09</a><br>
@@ -59,7 +80,7 @@ MSCボードゲームサークルの<br>
 <a href="activity_20250621.html">2025/06/21</a><br>
 <a href="activity_20250524.html">2025/05/24</a><br>
 <a href="activity_20250419.html">2025/04/19</a><br>
-
+</div>
 </td>
 
 </tr>
@@ -71,6 +92,7 @@ MSCボードゲームサークルの<br>
 </center>
 </body>
 </html>
+
 
 
 
