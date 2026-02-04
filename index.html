@@ -322,6 +322,21 @@ document.addEventListener("click", function(e){
   font-family: "tamanegi";
   src: url("tamanegi.ttf") format("truetype");
 }
+animation: glowPulse 0.8s infinite alternate;
+@keyframes glowPulse{
+  0%{
+    box-shadow:
+      0 0 10px red,
+      0 0 30px yellow,
+      0 0 60px orange;
+  }
+  100%{
+    box-shadow:
+      0 0 25px yellow,
+      0 0 60px red,
+      0 0 120px gold;
+  }
+}
 
 /* 暗転背景＋揺れ */
 #joinOverlay{
@@ -378,7 +393,7 @@ document.addEventListener("click", function(e){
 
 .line1{
   font-family: "tamanegi", Impact, Arial Black, sans-serif;
-  font-size: 65px;
+  font-size: 62px;
   color: gold;
   font-weight: bold;
   text-shadow:
@@ -474,7 +489,7 @@ window.addEventListener("resize", resizeStar);
 
 const fallingStars = [];
 
-for(let i=0;i<80;i++){
+for(let i=0;i<300;i++){
   fallingStars.push(createStar());
 }
 
@@ -507,10 +522,40 @@ function drawStars(){
 ctxStar.font="16px Arial";
 drawStars();
 </script>
+<div id="flash"></div>
+
+<style>
+#flash{
+  position:fixed;
+  inset:0;
+  background:white;
+  pointer-events:none;
+  opacity:0;
+  z-index:9998;
+}
+</style>
+
+<script>
+function screenFlash(){
+  const f=document.getElementById("flash");
+  f.style.transition="none";
+  f.style.opacity="1";
+  setTimeout(()=>{
+    f.style.transition="opacity 0.4s";
+    f.style.opacity="0";
+  },50);
+}
+</script>
 
 </body>
 
 </html>
+<script>
+window.addEventListener("load", ()=>{
+  screenFlash();
+});
+</script>
+
 
 
 
