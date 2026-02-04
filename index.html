@@ -378,7 +378,7 @@ document.addEventListener("click", function(e){
 
 .line1{
   font-family: "tamanegi", Impact, Arial Black, sans-serif;
-  font-size: 70px;
+  font-size: 65px;
   color: gold;
   font-weight: bold;
   text-shadow:
@@ -452,7 +452,7 @@ function closeJoin(){
 }
 </script>
 
-  <script>
+<script>
 const starCanvas = document.createElement("canvas");
 starCanvas.style.position = "fixed";
 starCanvas.style.left = 0;
@@ -501,12 +501,17 @@ function drawStars(){
     }
   });
 
-  requestAnimation
+  requestAnimationFrame(drawStars);
+}
 
+ctxStar.font="16px Arial";
+drawStars();
+</script>
 
 </body>
 
 </html>
+
 
 
 
