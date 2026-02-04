@@ -297,7 +297,7 @@ document.addEventListener("click", function(e){
 
 });
 </script>
-<!-- ===== 超派手 新規会員募集ポップアップ ===== -->
+<!-- ===== 超確定演出 新規会員募集ポップアップ ===== -->
 <div id="joinOverlay">
   <div id="joinWindow">
 
@@ -306,103 +306,137 @@ document.addEventListener("click", function(e){
     <a href="join.html">
       <div class="joinBanner">
 
-        <div class="line1">★★★ 新規会員募集中！ ★★★</div>
-        <div class="line2">＼ クリックして参加しよう！ ／</div>
+        <div class="line1">★★★ 新規会員募集中！！ ★★★</div>
+        <div class="line2">＼ 今すぐクリック！！参加確定！！ ／</div>
 
       </div>
     </a>
+
+    <div class="sparkle"></div>
 
   </div>
 </div>
 
 <style>
-/* 背景暗転 */
+
+/* 暗転背景＋揺れ */
 #joinOverlay{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.75);
+  background:rgba(0,0,0,0.85);
   display:flex;
   justify-content:center;
   align-items:center;
-  z-index:9999;
+  z-index:99999;
+  animation: shake 0.25s infinite;
 }
 
-/* ウィンドウ大型化 */
+/* 巨大ウィンドウ */
 #joinWindow{
   position:relative;
-  width:650px;
-  padding:40px;
+  width:900px;
+  padding:60px;
   background:black;
-  border:8px ridge gold;
+  border:12px ridge gold;
   box-shadow:
     0 0 40px red,
     0 0 80px yellow,
-    0 0 120px cyan;
+    0 0 140px cyan,
+    inset 0 0 40px white;
 }
 
 /* 閉じる */
 #closeBtn{
   position:absolute;
-  top:8px;
-  right:15px;
-  font-size:36px;
+  top:10px;
+  right:20px;
+  font-size:42px;
   color:white;
   cursor:pointer;
   text-shadow:0 0 10px red;
 }
 
-/* バナー本体 */
+/* バナー */
 .joinBanner{
-  padding:50px 30px;
+  position:relative;
+  padding:70px 40px;
   text-align:center;
-  border:6px double white;
+  border:8px double white;
   background:linear-gradient(
-    90deg,
+    270deg,
     red,orange,yellow,green,
     cyan,blue,violet,
     red,orange,yellow
   );
-  animation: bgMove 2s linear infinite;
+  background-size:400%;
+  animation: bgFlow 2s linear infinite;
 }
 
 /* 上段 */
 .line1{
-  font-size:42px;
+  font-size:52px;
   font-weight:bold;
   color:white;
-  animation:pulse 0.6s infinite alternate;
+  animation: jump 0.6s infinite alternate;
   text-shadow:
     0 0 10px yellow,
-    0 0 20px red;
+    0 0 30px red,
+    0 0 60px gold;
 }
 
 /* 下段 */
 .line2{
-  font-size:30px;
-  margin-top:15px;
+  margin-top:25px;
+  font-size:36px;
   color:yellow;
-  animation:pulse2 0.8s infinite alternate;
+  animation: jump2 0.8s infinite alternate;
   text-shadow:
     0 0 10px white,
-    0 0 20px orange;
+    0 0 25px orange,
+    0 0 60px red;
 }
 
-/* 背景レインボー流れ */
-@keyframes bgMove{
-  from{background-position:0%;}
-  to{background-position:200%;}
+/* キラキラ */
+.sparkle{
+  position:absolute;
+  inset:0;
+  background-image:
+    radial-gradient(white 2px, transparent 2px);
+  background-size:25px 25px;
+  animation: sparkleMove 1s linear infinite;
+  pointer-events:none;
 }
 
-/* 文字ドクドク */
-@keyframes pulse{
+/* ===== アニメーション ===== */
+
+@keyframes bgFlow{
+  0%{background-position:0%;}
+  100%{background-position:400%;}
+}
+
+@keyframes jump{
   from{transform:scale(1);}
-  to{transform:scale(1.1);}
+  to{transform:scale(1.15);}
 }
 
-@keyframes pulse2{
+@keyframes jump2{
   from{transform:scale(1);}
-  to{transform:scale(1.08);}
+  to{transform:scale(1.12);}
 }
+
+@keyframes sparkleMove{
+  from{background-position:0 0;}
+  to{background-position:50px 50px;}
+}
+
+@keyframes shake{
+  0%{transform:translate(0,0);}
+  25%{transform:translate(1px,-1px);}
+  50%{transform:translate(-1px,1px);}
+  75%{transform:translate(1px,1px);}
+  100%{transform:translate(0,0);}
+}
+
 </style>
 
 <script>
@@ -411,9 +445,11 @@ function closeJoin(){
 }
 </script>
 
+
 </body>
 
 </html>
+
 
 
 
