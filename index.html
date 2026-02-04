@@ -306,7 +306,7 @@ document.addEventListener("click", function(e){
     <a href="join.html">
       <div class="joinBanner">
 
-        <div class="line1">【新規会員募集中！！！】</div>
+        <div class="line1">★★★新規会員募集中！！！★★★</div>
         <div class="line2">＼ 入会希望者は今すぐクリック！！ ／</div>
 
       </div>
@@ -321,21 +321,6 @@ document.addEventListener("click", function(e){
 @font-face{
   font-family: "tamanegi";
   src: url("tamanegi.ttf") format("truetype");
-}
-animation: glowPulse 0.8s infinite alternate;
-@keyframes glowPulse{
-  0%{
-    box-shadow:
-      0 0 10px red,
-      0 0 30px yellow,
-      0 0 60px orange;
-  }
-  100%{
-    box-shadow:
-      0 0 25px yellow,
-      0 0 60px red,
-      0 0 120px gold;
-  }
 }
 
 /* 暗転背景＋揺れ */
@@ -393,7 +378,7 @@ animation: glowPulse 0.8s infinite alternate;
 
 .line1{
   font-family: "tamanegi", Impact, Arial Black, sans-serif;
-  font-size: 62px;
+  font-size: 60px;
   color: gold;
   font-weight: bold;
   text-shadow:
@@ -535,26 +520,9 @@ drawStars();
 }
 </style>
 
-<script>
-function screenFlash(){
-  const f=document.getElementById("flash");
-  f.style.transition="none";
-  f.style.opacity="1";
-  setTimeout(()=>{
-    f.style.transition="opacity 0.4s";
-    f.style.opacity="0";
-  },50);
-}
-</script>
-
 </body>
 
 </html>
-<script>
-window.addEventListener("load", ()=>{
-  screenFlash();
-});
-</script>
 
 
 
